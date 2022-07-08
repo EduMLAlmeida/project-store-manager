@@ -16,6 +16,12 @@ app.get('/products', async (_req, res) => {
   return res.status(200).json(products);
 });
 
+app.post('/products', async (req, res) => {
+  const product = req.body;
+  const result = await model.create(product);
+  return res.status(201).json(result);
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);
 });
