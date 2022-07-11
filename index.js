@@ -10,6 +10,8 @@ app.get('/products', controller.getAllProducts);
 
 app.post('/products', controller.createProduct);
 
+app.post('/sales', controller.createSale);
+
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);
 });

@@ -1,27 +1,41 @@
+const bodyParser = require('body-parser');
+const app = require('../app');
 const service = require('../services/service');
+
+app.use(bodyParser.json());
 
 const controller = {
   async getProduct(req, res) {
     const id = Number(req.params.id);
-    const result = await service.get(id);
+    const result = await service.getProduct(id);
     return res.status(result.code).json(result.product);
   },
+
   async getAllProducts(_req, res) {
-    const result = await service.getAll();
+    const result = await service.getAllProducts();
     return res.status(result.code).json(result.products);
   },
+
   async createProduct(req, res) {
     const product = req.body;
     const isValid = service.validateName(product);
     if (!isValid.validation) {
-      console.log('isValid.result', isValid.result);
       const { code, message } = isValid.result;
-      console.log('code', code);
-      console.log('message', message);
       return res.status(code).json(message);
     }
-    const result = await service.create(product);
+    const result = await service.createProduct(product);
     return res.status(result.code).json(result.result);
+  },
+
+  async createSale(req, res) {
+    const sale = req.body;
+    const saleValidation = await service.validateSale(sale);
+    if (saleValidation !== true) {
+      const { code, message } = saleValidation;
+      return res.status(code).json(message);
+    }
+    const result = await service.createSale(sale);
+    return res.status(result.code).json(result.message);
   },
 };
 
