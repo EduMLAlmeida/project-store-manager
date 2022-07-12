@@ -10,6 +10,10 @@ app.get('/products', controller.getAllProducts);
 
 app.post('/products', controller.createProduct);
 
+app.get('/sales/:id', controller.getSale);
+
+app.get('/sales', controller.getAllSales);
+
 app.post('/sales', controller.createSale);
 
 app.listen(process.env.PORT, () => {

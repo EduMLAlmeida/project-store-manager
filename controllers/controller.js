@@ -37,6 +37,17 @@ const controller = {
     const result = await service.createSale(sale);
     return res.status(result.code).json(result.message);
   },
+
+  async getSale(req, res) {
+    const id = Number(req.params.id);
+    const result = await service.getSale(id);
+    return res.status(result.code).json(result.result);
+  },
+
+  async getAllSales(_req, res) {
+    const result = await service.getAllSales();
+    return res.status(result.code).json(result.result);
+  },
 };
 
 module.exports = controller;

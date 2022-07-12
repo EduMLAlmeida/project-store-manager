@@ -87,6 +87,39 @@ const service = {
     await model.createSale(newSale, id);
     return { code: 201, message: { id, itemsSold: newSale } };
   },
+
+  async getSale(id) {
+    const sale = await model.getSaleById(id);
+    if (sale.length === 0) return { code: 404, result: { message: 'Sale not found' } };
+    const result = sale.map((element) => {
+      const { date, quantity } = element;
+      const productId = element.product_id;
+      const object = {
+        date,
+        productId,
+        quantity,
+      };
+      return object;
+    });
+    return { code: 200, result };
+  },
+
+  async getAllSales() {
+    const sales = await model.getDetailedSales();
+    const result = sales.map((element) => {
+      const { date, quantity } = element;
+      const saleId = element.sale_id;
+      const productId = element.product_id;
+      const object = {
+        saleId,
+        date,
+        productId,
+        quantity,
+      };
+      return object;
+    });
+    return { code: 200, result };
+  },
 };
 
 module.exports = service;
