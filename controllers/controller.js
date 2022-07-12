@@ -39,6 +39,12 @@ const controller = {
     return res.status(result.code).json(result.result);
   },
 
+  async deleteProduct(req, res) {
+    const id = Number(req.params.id);
+    const result = await service.deleteProduct(id);
+    return res.status(result.code).json(result.result);
+  },
+
   async createSale(req, res) {
     const sale = req.body;
     const saleValidation = await service.validateSale(sale);

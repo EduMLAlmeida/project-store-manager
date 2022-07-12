@@ -25,6 +25,13 @@ const service = {
     return { code: 200, result: { id, name } };
   },
 
+  async deleteProduct(id) {
+    const product = await model.getProductById(id);
+    if (!product) return { code: 404, result: { message: 'Product not found' } };
+    await model.deleteProduct(id);
+    return { code: 204 };
+  },
+
   validateName(product) {
     const message1 = '"name" is required';
     const message2 = '"name" length must be at least 5 characters long';
