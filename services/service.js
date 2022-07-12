@@ -17,6 +17,14 @@ const service = {
     return { code: 201, result };
   },
 
+  async upDateProduct(newProduct, id) {
+    const oldProduct = await model.getProductById(id);
+    if (!oldProduct) return { code: 404, result: { message: 'Product not found' } };
+    await model.upDateProduct(newProduct, id);
+    const { name } = newProduct;
+    return { code: 200, result: { id, name } };
+  },
+
   validateName(product) {
     const message1 = '"name" is required';
     const message2 = '"name" length must be at least 5 characters long';

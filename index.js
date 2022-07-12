@@ -10,6 +10,8 @@ app.get('/products', controller.getAllProducts);
 
 app.post('/products', controller.createProduct);
 
+app.put('/products/:id', controller.upDateProduct);
+
 app.get('/sales/:id', controller.getSale);
 
 app.get('/sales', controller.getAllSales);

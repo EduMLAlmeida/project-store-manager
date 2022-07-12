@@ -8,7 +8,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-07-07T21:15:24.423Z",
-    "modified": "2022-07-11T21:37:34.050Z",
+    "modified": "2022-07-12T18:05:42.764Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -94,17 +94,22 @@
     "tests": []
   },
   {
-    "_id": "5a81b04c-b5c5-4c06-b982-1b25709df0de",
+    "_id": "b4324744-4241-4604-9f9c-e7da1a062e81",
     "colId": "history",
     "containerId": "",
-    "name": "http://localhost:3000/sales/999",
-    "url": "http://localhost:3000/sales/999",
-    "method": "GET",
+    "name": "req10",
+    "url": "http://localhost:3000/products/1",
+    "method": "PUT",
     "sortNum": 0,
-    "created": "2022-07-12T17:34:34.988Z",
-    "modified": "2022-07-12T17:35:27.016Z",
+    "created": "2022-07-12T17:40:59.579Z",
+    "modified": "2022-07-12T18:08:53.930Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "  {\n    \"name\": \"Martelo do Thor\"\n  }",
+      "form": []
+    },
     "tests": []
   }
 ]

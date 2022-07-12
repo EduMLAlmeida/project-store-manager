@@ -27,6 +27,18 @@ const controller = {
     return res.status(result.code).json(result.result);
   },
 
+  async upDateProduct(req, res) {
+    const id = Number(req.params.id);
+    const product = req.body;  
+    const isValid = service.validateName(product);
+    if (!isValid.validation) {
+      const { code, message } = isValid.result;
+      return res.status(code).json(message);
+    }
+    const result = await service.upDateProduct(product, id);
+    return res.status(result.code).json(result.result);
+  },
+
   async createSale(req, res) {
     const sale = req.body;
     const saleValidation = await service.validateSale(sale);
